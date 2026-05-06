@@ -38,7 +38,7 @@ export default async function InsightPost({ params }: PageProps) {
     <>
       {/* Section 1: Post Header */}
       <section data-bg="light" className="bg-cream pt-[120px] md:pt-[180px] pb-[64px] md:pb-[96px]">
-        <div className="mx-auto max-w-[760px] px-6 md:px-10">
+        <div className="mx-auto max-w-[960px] px-6 md:px-10">
           <Link
             href="/insights"
             className="text-[14px] font-medium text-graphite transition-colors duration-200 hover:text-plum"
@@ -62,7 +62,7 @@ export default async function InsightPost({ params }: PageProps) {
 
       {/* Section 2: Post Body */}
       <section data-bg="light" className="bg-cream pb-[80px] md:pb-[120px]">
-        <div className="mx-auto max-w-[720px] px-6 md:px-10">
+        <div className="mx-auto max-w-[960px] px-6 md:px-10">
           <div
             className="prose-article"
             dangerouslySetInnerHTML={{ __html: post.body }}

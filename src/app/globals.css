@@ -1,28 +1,241 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --plum: #362E76;
+  --aubergine: #693E82;
+  --ink: #0D0F2A;
+  --teal: #09B5B7;
+  --cream: #FAF7F0;
+  --bone: #E8E1D3;
+  --graphite: #5C5A55;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-plum: var(--plum);
+  --color-aubergine: var(--aubergine);
+  --color-ink: var(--ink);
+  --color-teal: var(--teal);
+  --color-cream: var(--cream);
+  --color-bone: var(--bone);
+  --color-graphite: var(--graphite);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-fraunces);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* No scroll-behavior: smooth here. It causes animated scroll-to-top on
+   route changes instead of instant jump. Anchor scroll is handled per-use. */
+
+body {
+  background-color: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background-color: var(--plum);
+  color: var(--cream);
+}
+
+/* Display type: hero h1 — Source Serif 4 */
+.display {
+  font-family: var(--font-display), serif;
+  font-size: 72px;
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--plum);
+}
+
+@media (max-width: 767px) {
+  .display {
+    font-size: 44px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Heading: section h2 — Source Serif 4 */
+.heading {
+  font-family: var(--font-display), serif;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--plum);
+}
+
+@media (max-width: 767px) {
+  .heading {
+    font-size: 32px;
+  }
+}
+
+/* Subheading: h3 — Source Serif 4 */
+.subheading {
+  font-family: var(--font-display), serif;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--plum);
+}
+
+@media (max-width: 767px) {
+  .subheading {
+    font-size: 22px;
+  }
+}
+
+/* Body prose */
+.prose-body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+@media (max-width: 767px) {
+  .prose-body {
+    font-size: 16px;
+  }
+}
+
+/* Article prose: styles for blog post body content */
+.prose-article p {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.75;
+  color: color-mix(in srgb, var(--ink) 90%, transparent);
+  margin-bottom: 24px;
+}
+
+.prose-article h2 {
+  font-family: var(--font-display), serif;
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--plum);
+  line-height: 1.25;
+  margin-top: 64px;
+  margin-bottom: 24px;
+}
+
+.prose-article h3 {
+  font-family: var(--font-display), serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--plum);
+  line-height: 1.3;
+  margin-top: 48px;
+  margin-bottom: 20px;
+}
+
+.prose-article h4 {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--plum);
+  margin-top: 40px;
+  margin-bottom: 16px;
+}
+
+.prose-article strong {
+  font-weight: 600;
+  color: var(--plum);
+}
+
+.prose-article em {
+  font-style: italic;
+}
+
+.prose-article a {
+  color: var(--plum);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--plum) 40%, transparent);
+  text-underline-offset: 3px;
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+
+.prose-article a:hover {
+  color: var(--teal);
+  text-decoration-color: var(--teal);
+}
+
+.prose-article ol {
+  padding-left: 32px;
+  margin-bottom: 24px;
+}
+
+.prose-article ol li {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--ink) 90%, transparent);
+  margin-bottom: 12px;
+}
+
+.prose-article ol li::marker {
+  color: var(--aubergine);
+}
+
+.prose-article ul {
+  list-style: none;
+  padding-left: 32px;
+  margin-bottom: 24px;
+}
+
+.prose-article ul li {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--ink) 90%, transparent);
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.prose-article ul li::before {
+  content: "\2013";
+  color: var(--aubergine);
+  position: absolute;
+  left: -24px;
+}
+
+.prose-article blockquote {
+  border-left: 3px solid var(--aubergine);
+  padding-left: 24px;
+  margin-left: 0;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.prose-article blockquote p {
+  font-family: var(--font-display), serif;
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.5;
+  color: var(--plum);
+  margin-bottom: 0;
+}
+
+.prose-article hr {
+  border: none;
+  border-top: 1px solid color-mix(in srgb, var(--plum) 20%, transparent);
+  margin: 48px auto;
+  max-width: 80px;
+}
+
+@media (max-width: 767px) {
+  .prose-article h2 {
+    font-size: 28px;
+  }
+  .prose-article h3 {
+    font-size: 22px;
+  }
+}
+
+/* Hero: cap at exact viewport height on desktop, allow overflow on mobile */
+@media (min-width: 768px) {
+  section[data-hero] {
+    height: 100dvh;
+    min-height: auto;
+  }
 }
 
 /* Section spacing: remove top padding when consecutive sections share the same background */
